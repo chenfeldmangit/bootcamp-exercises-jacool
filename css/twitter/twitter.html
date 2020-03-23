@@ -4,41 +4,106 @@
     <meta charset="UTF-8">
     <title>Twitter</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        li.menu-item {
-            list-style-type: none;
-        }
-
-        #menu {
-            padding: unset;
-        }
-
-        .menu-item-text {
-            padding-left: 15px;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-            font-size:19px;
-            font-weight:700;
-        }
-    </style>
 </head>
 <body>
 <div id="menu-container">
-    <div id="logo">
-        <img src="logo.svg" alt="" width="24" height="24">
+    <div id="logo" class="colored">
+        <img src="logo.svg" alt="Logo" width="30" height="30">
     </div>
     <ul id="menu">
-        <li class="menu-item">
-            <img src="home.svg" alt="" width="24" height="24">
+        <li class="menu-item colored">
+            <img src="home.svg" alt="Home" width="25" height="25">
             <span class="menu-item-text">Home</span>
         </li>
         <li class="menu-item">
-            <img src="explore.svg" alt="" width="24" height="24">
+            <img src="explore.svg" alt="Explore" width="25" height="25">
             <span class="menu-item-text">Explore</span>
+        </li>
+        <li class="menu-item">
+            <img src="notifications.svg" alt="Notifications" width="25" height="25">
+            <span class="menu-item-text">Notifications</span>
+        </li>
+        <li class="menu-item">
+            <img src="messages.svg" alt="Messages" width="25" height="25">
+            <span class="menu-item-text">Messages</span>
+        </li>
+        <li class="menu-item">
+            <img src="bookmarks.svg" alt="Bookmarks" width="25" height="25">
+            <span class="menu-item-text">Bookmarks</span>
+        </li>
+        <li class="menu-item">
+            <img src="lists.svg" alt="Lists" width="25" height="25">
+            <span class="menu-item-text">Lists</span>
+        </li>
+        <li class="menu-item">
+            <img src="more.svg" alt="More" width="25" height="25">
+            <span class="menu-item-text">More</span>
         </li>
     </ul>
 </div>
 <div id="feed-container">
+    <div id="tab-title-container" class="boxy">
+        <span class="tab-title">Home</span>
+        <img src="star.svg" alt="Help" width="24" height="24" class="colored">
+    </div>
+    <div id="twitting-container" class="boxy">
+        <img src="jacob.jpeg" alt="Pic" class="profile-pic" width="50" height="50" >
+        <div id="twitting-box">
+            <input type="text" id="twitting-input" placeholder="What's happening?">
+            <div id="twitting-toolbar-container">
+                <div id="twitting-toolbar">
+                    <img src="open-picture.svg" width="24" height="24" class="colored tool-button" alt="Open pic">
+                    <img src="open-gif.svg" width="24" height="24" class="colored tool-button" alt="Open gif">
+                </div>
+                <a href="#" id="small-tweet">Tweet</a>
+            </div>
+        </div>
 
+    </div>
+    <div id="feed">
+        <div class="post-container boxy">
+            <img src="eilon.jfif" class="profile-pic" width="50" height="50" alt="Pic">
+            <article>
+                <h3 class="author">
+                   Eilon Reshef
+                </h3>
+                <p class="post-text">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                    a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                </p>
+            </article>
+        </div>
+        <div class="post-container boxy">
+            <img src="bill.jfif" class="profile-pic" width="50" height="50" alt="Pic">
+            <article>
+                <h3 class="author">
+                    Bill Gates
+                </h3>
+                <p class="post-text">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+                    making it over 2000 years old.
+                </p>
+            </article>
+        </div>
+        <div class="post-container boxy">
+            <img src="chen.jpg" class="profile-pic" width="50" height="50" alt="Pic">
+            <article>
+                <h3 class="author">
+                    Chen Feldman
+                </h3>
+                <p class="post-text">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+                    content here', making it look like readable English.
+                </p>
+            </article>
+        </div>
+    </div>
+
+</div>
+<div id="suggestions-container">
+    suggestions column
 </div>
 </body>
 </html>
