@@ -34,6 +34,11 @@ body #menu-container #menu li .menu-item-text {
   font-size: 19px;
   font-weight: 700;
 }
+@media screen and (max-width: 600px) {
+  body #menu-container #menu li .menu-item-text {
+    display: none;
+  }
+}
 body #feed-container {
   display: flex;
   flex-direction: column;
