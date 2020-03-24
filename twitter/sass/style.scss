@@ -1,0 +1,190 @@
+$basic-blue: rgb(29, 161, 242);
+$basic-grey: rgb(230, 236, 240);
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+
+  .profile-pic {
+    border-radius: 9999px;
+  }
+
+  .colored {
+    /* $basic-blue = #1da1f2 */
+    filter: invert(46%) sepia(54%) saturate(2316%) hue-rotate(181deg) brightness(106%) contrast(90%);
+  }
+
+  ::placeholder {
+    color: darkgrey;
+  }
+
+  #menu-container {
+    flex-direction: column;
+
+    #logo {
+      margin-bottom: 1.5em;
+    }
+
+    #menu {
+      padding: unset;
+
+      li {
+        list-style-type: none;
+        margin-bottom: 1.8em;
+        display: flex;
+        align-items: center;
+
+        .menu-item-text {
+          padding-left: 1.2em;
+          font-size: 19px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  #feed-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: $basic-grey;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: $basic-grey;
+
+    .boxy {
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-bottom-color: $basic-grey;
+    }
+
+    #tab-title-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 3em;
+      padding-left: 1em;
+      padding-right: 1em;
+
+      .tab-title {
+        font-size: 19px;
+        font-weight: 800;
+      }
+    }
+
+    #twitting-container {
+      display: flex;
+      flex-direction: row;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      padding-left: 1em;
+
+      #twitting-box {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 10;
+        padding-left: 1em;
+        padding-right: 1em;
+
+        #twitting-input {
+          border: none;
+          font-size: 19px;
+          font-weight: 400;
+          padding-top: 1em;
+          padding-bottom: 1em;
+        }
+
+        #twitting-toolbar-container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          #twitting-toolbar {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            .tool-button {
+              padding: 0.5em;
+            }
+          }
+
+          #small-tweet {
+            background-color: $basic-blue;
+            opacity: 0.5;
+            border-radius: 9999px;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 15px;
+            padding: 10px 18px;
+            text-decoration: none;
+            font-weight: 700;
+          }
+
+          #small-tweet:hover {
+            opacity: 1;
+          }
+
+          #small-tweet:active {
+            position: relative;
+            top: 1px;
+          }
+        }
+      }
+    }
+
+    .post-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 1em;
+
+      .post-face {
+        border-radius: 9999px;
+        padding: 1em;
+      }
+
+      article {
+        padding-left: 1em;
+        padding-right: 1em;
+
+        .author {
+          margin-block-start: 0;
+          margin-block-end: 0;
+          margin: 0;
+          font-size: 15px;
+        }
+
+        .post-text {
+          margin-block-start: 0;
+          margin-block-end: 0;
+          margin: 0;
+          font-size: 15px;
+        }
+
+        .post-toolbar {
+          padding-top: 1em;
+          padding-right: 5em;
+          filter: invert(45%) sepia(22%) saturate(324%) hue-rotate(165deg) brightness(96%) contrast(94%);
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
