@@ -5,7 +5,19 @@
     <title>Twitter</title>
     <link rel="stylesheet" href="sass/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        const data = {
+            name: "",
+            text: "ghgfh"
+        };
+
+        function profileClick() {
+            document.getElementById("profile-container").style.display = "flex"
+            document.getElementById("feed-container").style.display = "none";
+        }
+    </script>
 </head>
+
 <body>
 <div id="menu-container">
     <div id="logo" class="colored">
@@ -36,7 +48,7 @@
             <img src="img/lists.svg" alt="Lists" width="25" height="25">
             <span class="menu-item-text">Lists</span>
         </li>
-        <li>
+        <li onclick="profileClick()">
             <img src="img/jacob.jpeg" alt="Profile" width="25" height="25" class="profile-pic">
             <span class="menu-item-text">Profile</span>
         </li>
@@ -52,7 +64,7 @@
         <img src="img/star.svg" alt="Help" width="24" height="24" class="colored">
     </div>
     <div id="twitting-container" class="boxy">
-        <img src="img/jacob.jpeg" alt="Pic" class="profile-pic" width="50" height="50" >
+        <img src="img/jacob.jpeg" alt="Pic" class="profile-pic" width="50" height="50">
         <div id="twitting-box">
             <input type="text" id="twitting-input" placeholder="What's happening?">
             <div id="twitting-toolbar-container">
@@ -71,12 +83,14 @@
             <img src="img/eilon.jfif" class="profile-pic" width="50" height="50" alt="Pic">
             <article>
                 <h3 class="author">
-                   Eilon Reshef
+                    Eilon Reshef
                 </h3>
                 <p class="post-text">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                    a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make
+                    a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                    typesetting, remaining essentially unchanged.
                 </p>
                 <div class="post-toolbar">
                     <img src="img/reply.svg" width="16" height="16" alt="Reply">
@@ -93,7 +107,8 @@
                     Bill Gates
                 </h3>
                 <p class="post-text">
-                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                    classical Latin literature from 45 BC,
                     making it over 2000 years old.
                 </p>
                 <div class="post-toolbar">
@@ -127,6 +142,20 @@
         </div>
     </div>
 
+</div>
+<div id="profile-container" class="boxy">
+    <div class="back-nav">
+        <img src="img/back-arrow.svg" width="16" height="16" class="colored">
+        <h2 class="tab-title">Jacob Eckel</h2>
+    </div>
+    <img src="img/profile-back.jfif" alt="Background">
+    <div id="profile-pic-bar">
+        <img src="img/jacob.jpeg" width="134" height="134" class="profile-pic">
+        <a href="#" class="button">Edit profile</a>
+    </div>
+    <div id="profile-data-bar">
+        <h2 class="tab-title">Jacob Eckel</h2>
+    </div>
 </div>
 <div id="suggestions-container">
     <div>

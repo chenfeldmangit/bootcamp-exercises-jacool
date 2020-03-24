@@ -1,6 +1,14 @@
 $basic-blue: rgb(29, 161, 242);
 $basic-grey: rgb(230, 236, 240);
 
+@mixin grey-borders {
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: $basic-grey;
+}
+
 body {
   display: flex;
   flex-direction: row;
@@ -19,6 +27,40 @@ body {
 
   ::placeholder {
     color: darkgrey;
+  }
+
+  .tab-title {
+    font-size: 19px;
+    font-weight: 800;
+  }
+
+  .boxy {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: $basic-grey;
+  }
+
+  .button {
+    background-color: #ffffff;
+    border-radius: 9999px;
+    display: inline-block;
+    cursor: pointer;
+    color: $basic-blue;
+    font-size: 15px;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .button:hover {
+    background-color: lightblue;
+  }
+
+  .button:active {
+    position: relative;
+    top: 1px;
   }
 
   #menu-container {
@@ -47,6 +89,13 @@ body {
           }
         }
       }
+
+      li:hover {
+        background-color: $basic-blue;
+        border-radius: 9999px;
+        //opacity: 0.2;
+        color: #ffffff; //$basic-blue;
+      }
     }
   }
 
@@ -55,18 +104,7 @@ body {
     flex-direction: column;
     flex-basis: 50%;
 
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-left-color: $basic-grey;
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-right-color: $basic-grey;
-
-    .boxy {
-      border-bottom-style: solid;
-      border-bottom-width: 1px;
-      border-bottom-color: $basic-grey;
-    }
+    @include grey-borders;
 
     #tab-title-container {
       display: flex;
@@ -76,11 +114,6 @@ body {
       height: 3em;
       padding-left: 1em;
       padding-right: 1em;
-
-      .tab-title {
-        font-size: 19px;
-        font-weight: 800;
-      }
     }
 
     #twitting-container {
@@ -182,6 +215,32 @@ body {
           flex-direction: row;
           justify-content: space-between;
         }
+      }
+    }
+  }
+
+  #profile-container {
+    display: none;
+    flex-direction: column;
+
+    @include grey-borders;
+
+    .back-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    #profile-pic-bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      img {
+        margin-top: -80px;
+        border-color: #ffffff;
+        border-width: 10px;
       }
     }
   }
