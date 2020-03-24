@@ -165,10 +165,21 @@ h3.author {
     margin-block-start: 0;
     margin-block-end: 0;
     margin: 0;
+    font-size: 15px;
 }
 
 p.post-text {
     margin-block-start: 0;
     margin-block-end: 0;
     margin: 0;
+    font-size: 15px;
+}
+
+.post-toolbar {
+    padding-top: 1em;
+    padding-right: 5em;
+    filter: invert(45%) sepia(22%) saturate(324%) hue-rotate(165deg) brightness(96%) contrast(94%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
