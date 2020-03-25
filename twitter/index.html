@@ -6,14 +6,27 @@
     <link rel="stylesheet" href="sass/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        const data = {
-            name: "",
-            text: "ghgfh"
-        };
+        const data = [
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
+            "printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic" +
+            "typesetting, remaining essentially unchanged.",
+            "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC," +
+            "making it over 2000 years old.",
+            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." +
+            "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here," +
+            "content here', making it look like readable English."
+        ];
 
         function profileClick() {
-            document.getElementById("profile-container").style.display = "flex"
+            document.getElementById("profile-container").style.display = "flex";
             document.getElementById("feed-container").style.display = "none";
+            const myTweets = document.getElementById("my-tweets");
+            const template = document.getElementById("post-container-template").content;
+            data.forEach(text => {
+                const post = template.cloneNode(true);
+                post.querySelector(".post-text").textContent = text;
+                myTweets.appendChild(post);
+            });
         }
     </script>
 </head>
@@ -145,16 +158,42 @@
 </div>
 <div id="profile-container" class="boxy">
     <div class="back-nav">
-        <img src="img/back-arrow.svg" width="16" height="16" class="colored">
+        <img src="img/back-arrow.svg" width="16" height="16" class="colored" alt="Back">
         <h2 class="tab-title">Jacob Eckel</h2>
     </div>
     <img src="img/profile-back.jfif" alt="Background">
     <div id="profile-pic-bar">
-        <img src="img/jacob.jpeg" width="134" height="134" class="profile-pic">
+        <img src="img/jacob.jpeg" width="134" height="134" class="profile-pic" alt="Photo">
         <a href="#" class="button">Edit profile</a>
     </div>
     <div id="profile-data-bar">
         <h2 class="tab-title">Jacob Eckel</h2>
+        <h3 class="small-text">@eckely</h3>
+    </div>
+    <div id="my-tweets-container">
+        <div class="inner-tab-name">
+            Tweets
+        </div>
+        <div id="my-tweets">
+            <template id="post-container-template">
+                <div class="post-container boxy">
+                    <img src="img/jacob.jpeg" class="profile-pic" width="50" height="50" alt="Pic">
+                    <article>
+                        <h3 class="author">
+                            Jacob Eckel
+                        </h3>
+                        <p class="post-text">
+                        </p>
+                        <div class="post-toolbar">
+                            <img src="img/reply.svg" width="16" height="16" alt="Reply">
+                            <img src="img/retweet.svg" width="16" height="16" alt="Retweet">
+                            <img src="img/heart.svg" width="16" height="16" alt="Like">
+                            <img src="img/forward.svg" width="16" height="16" alt="Forward">
+                        </div>
+                    </article>
+                </div>
+            </template>
+        </div>
     </div>
 </div>
 <div id="suggestions-container">
