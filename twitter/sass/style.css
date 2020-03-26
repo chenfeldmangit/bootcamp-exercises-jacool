@@ -210,7 +210,9 @@ body #profile-container {
 body #profile-container .back-nav {
   display: flex;
   flex-direction: row;
+  justify-content: left;
   align-items: center;
+  margin-left: 2em;
 }
 body #profile-container #profile-pic-bar {
   display: flex;
@@ -223,6 +225,10 @@ body #profile-container #profile-pic-bar img {
   border-color: #ffffff;
   border-width: 5px;
   border-style: solid;
+}
+body #profile-container #profile-details {
+  margin-left: 0.8em;
+  margin-right: 0.8em;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -250,7 +250,9 @@ body {
     .back-nav {
       display: flex;
       flex-direction: row;
+      justify-content: left;
       align-items: center;
+      margin-left: 2em;
     }
 
     #profile-pic-bar {
@@ -265,6 +267,11 @@ body {
         border-width: 5px;
         border-style: solid;
       }
+    }
+
+    #profile-details {
+      margin-left: 0.8em;
+      margin-right: 0.8em;
     }
   }
 }
