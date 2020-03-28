@@ -1,5 +1,9 @@
 $basic-blue: rgb(29, 161, 242);
 $basic-grey: rgb(230, 236, 240);
+$background-grey: rgb(245, 248, 250);
+$very-dark-grey: rgb(20, 23, 26);
+$darker-grey: rgb(169, 169, 169);
+$counter-grey: rgb(101, 119, 134);
 
 @mixin grey-borders {
   border-left-style: solid;
@@ -263,6 +267,7 @@ body {
 
     .profile-face {
       margin-top: -80px;
+      margin-left: 0.5em;
       border-color: #ffffff;
       border-width: 5px;
       border-style: solid;
@@ -294,7 +299,7 @@ body {
       flex-direction: column;
       align-items: flex-start;
       background-color: white;
-      margin: 15% auto;
+      margin: 3em auto;
       padding: 20px;
       border: 1px solid #888;
       border-radius: 14px;
@@ -302,8 +307,44 @@ body {
       max-height: 90vh;
       min-width: 600px;
       max-width: 80vw;
-      height: 650px;
-      //flex-shrink: 1;
+
+      .profile-edit-field-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        background-color: $background-grey;
+
+        width: 100%;
+        margin-top: 1em;
+
+        .profile-edit-input {
+          border: none;
+          font-size: 19px;
+          font-weight: 400;
+          font-style: normal;
+          font-family: inherit;
+          color: $very-dark-grey;
+
+          background-color: transparent;
+          border-bottom-style: solid;
+          border-bottom-color: $darker-grey;
+          border-bottom-width: 2px;
+        }
+        .profile-edit-input:focus {
+          outline: none;
+          border-bottom-color: $basic-blue;
+        }
+
+        .input-counter {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          color: $counter-grey;
+          padding-right: 10px;
+          padding-top: 5px;
+          background-color: white;
+        }
+      }
     }
   }
 }

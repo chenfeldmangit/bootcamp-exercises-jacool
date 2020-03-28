@@ -222,6 +222,7 @@ body #profile-container {
 }
 body #profile-container .profile-face {
   margin-top: -80px;
+  margin-left: 0.5em;
   border-color: #ffffff;
   border-width: 5px;
   border-style: solid;
@@ -249,7 +250,7 @@ body #profile-container #profile-edit-container {
   flex-direction: column;
   align-items: flex-start;
   background-color: white;
-  margin: 15% auto;
+  margin: 3em auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 14px;
@@ -257,7 +258,39 @@ body #profile-container #profile-edit-container {
   max-height: 90vh;
   min-width: 600px;
   max-width: 80vw;
-  height: 650px;
+}
+body #profile-container #profile-edit-container .profile-edit-field-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #f5f8fa;
+  width: 100%;
+  margin-top: 1em;
+}
+body #profile-container #profile-edit-container .profile-edit-field-container .profile-edit-input {
+  border: none;
+  font-size: 19px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: inherit;
+  color: #14171a;
+  background-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-color: darkgray;
+  border-bottom-width: 2px;
+}
+body #profile-container #profile-edit-container .profile-edit-field-container .profile-edit-input:focus {
+  outline: none;
+  border-bottom-color: #1da1f2;
+}
+body #profile-container #profile-edit-container .profile-edit-field-container .input-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: #657786;
+  padding-right: 10px;
+  padding-top: 5px;
+  background-color: white;
 }
 
 /*# sourceMappingURL=style.css.map */

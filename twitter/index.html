@@ -6,23 +6,35 @@
     <link rel="stylesheet" href="sass/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        const data = [
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
-            "printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic" +
-            "typesetting, remaining essentially unchanged.",
-            "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC," +
-            "making it over 2000 years old.",
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." +
-            "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here," +
-            "content here', making it look like readable English."
-        ];
+
+        const jacobProfile = {
+            "name": "Jacob Eckel",
+            "bio": "Software developer since the last century",
+            "handle": "@eckely",
+            "posts": [
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown" +
+                "printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic" +
+                "typesetting, remaining essentially unchanged.",
+                "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC," +
+                "making it over 2000 years old.",
+                "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." +
+                "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here," +
+                "content here', making it look like readable English."
+            ]
+        };
 
         function profileClick() {
             document.getElementById("profile-container").style.display = "flex";
             document.getElementById("feed-container").style.display = "none";
+
+            document.getElementById("profile-top-name").textContent = jacobProfile.name;
+            document.getElementById("profile-name").textContent = jacobProfile.name;
+            document.getElementById("profile-handle").textContent = jacobProfile.handle;
+            document.getElementById("profile-bio").textContent = jacobProfile.bio;
+
             const myTweets = document.getElementById("my-tweets");
             const template = document.getElementById("post-container-template").content;
-            data.forEach(text => {
+            jacobProfile.posts.forEach(text => {
                 const post = template.cloneNode(true);
                 post.querySelector(".post-text").textContent = text;
                 myTweets.appendChild(post);
@@ -31,6 +43,25 @@
 
         function editProfileClick() {
             document.getElementById("profile-edit-modal").style.display = "flex";
+            document.getElementById("name-field").value = document.getElementById("profile-name").textContent;
+            document.getElementById("bio-field").value = document.getElementById("profile-bio").textContent;
+
+            Array.from(document.getElementsByClassName("profile-edit-field-container")).forEach(container => {
+                    const input = container.querySelector(".profile-edit-input");
+                    const counter = container.querySelector(".counter");
+                    counter.textContent = input.value.length.toString();
+                    input.addEventListener("input", () => {
+                        counter.textContent = input.value.length.toString();
+                    });
+                }
+            );
+        }
+
+        function saveProfileClick() {
+            document.getElementById("profile-edit-modal").style.display = "none";
+            document.getElementById("profile-top-name").textContent = document.getElementById("name-field").value;
+            document.getElementById("profile-name").textContent = document.getElementById("name-field").value;
+            document.getElementById("profile-bio").textContent = document.getElementById("bio-field").value;
         }
     </script>
 </head>
@@ -163,7 +194,7 @@
 <div id="profile-container" class="boxy">
     <div class="back-nav">
         <img src="img/back-arrow.svg" width="16" height="16" class="colored" alt="Back">
-        <h2 class="tab-title">Jacob Eckel</h2>
+        <h2 class="tab-title" id="profile-top-name"></h2>
     </div>
     <img src="img/profile-back.jfif" alt="Background">
     <div id="profile-details">
@@ -172,8 +203,9 @@
             <span onclick="editProfileClick()" class="button">Edit profile</span>
         </div>
         <div id="profile-data-bar">
-            <h2 class="tab-title">Jacob Eckel</h2>
-            <h3 class="small-text">@eckely</h3>
+            <h2 class="tab-title" id="profile-name"></h2>
+            <h3 class="small-text" id="profile-handle"></h3>
+            <p class="post-text" id="profile-bio"></p>
         </div>
     </div>
     <div id="my-tweets-container">
@@ -206,12 +238,26 @@
         <div id="profile-edit-container">
             <div>
                 <span class="tab-title">Edit profile</span>
-                <span class="button">Save</span>
+                <span class="button" onclick="saveProfileClick()">Save</span>
             </div>
-            <img src="img/profile-back.jfif">
+            <img src="img/profile-back.jfif" alt="Background">
             <img src="img/jacob.jpeg" width="112" height="112" class="profile-face" alt="Photo">
-            <label for="name-field">Name</label>
-            <input id="name-field" type="text" placeholder="Add your name">
+            <div class="profile-edit-field-container">
+                <label for="name-field">Name</label>
+                <input id="name-field" type="text" maxlength="50" class="profile-edit-input"
+                       placeholder="Add your name">
+                <div class="input-counter">
+                    <span class="counter"></span><span>/50</span>
+                </div>
+            </div>
+            <div class="profile-edit-field-container">
+                <label for="bio-field">Bio</label>
+                <textarea id="bio-field" maxlength="160" class="profile-edit-input"
+                          placeholder="Add your bio"></textarea>
+                <div class="input-counter">
+                    <span class="counter"></span><span>/160</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
