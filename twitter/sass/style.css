@@ -61,6 +61,19 @@ body .small-text {
   margin-top: 1em;
   margin-bottom: 1em;
 }
+body .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 body .post-container {
   display: flex;
   flex-direction: row;
@@ -207,6 +220,13 @@ body #profile-container {
   border-right-width: 1px;
   border-color: #e6ecf0;
 }
+body #profile-container .profile-face {
+  margin-top: -80px;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 9999px;
+}
 body #profile-container .back-nav {
   display: flex;
   flex-direction: row;
@@ -220,15 +240,24 @@ body #profile-container #profile-pic-bar {
   justify-content: space-between;
   align-items: flex-start;
 }
-body #profile-container #profile-pic-bar img {
-  margin-top: -80px;
-  border-color: #ffffff;
-  border-width: 5px;
-  border-style: solid;
-}
 body #profile-container #profile-details {
   margin-left: 0.8em;
   margin-right: 0.8em;
+}
+body #profile-container #profile-edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 14px;
+  min-height: 400px;
+  max-height: 90vh;
+  min-width: 600px;
+  max-width: 80vw;
+  height: 650px;
 }
 
 /*# sourceMappingURL=style.css.map */

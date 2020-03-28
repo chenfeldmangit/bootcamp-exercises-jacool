@@ -83,6 +83,20 @@ body {
     margin-bottom: 1em;
   }
 
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
   .post-container {
     display: flex;
     flex-direction: row;
@@ -247,6 +261,14 @@ body {
 
     @include grey-borders;
 
+    .profile-face {
+      margin-top: -80px;
+      border-color: #ffffff;
+      border-width: 5px;
+      border-style: solid;
+      border-radius: 9999px;
+    }
+
     .back-nav {
       display: flex;
       flex-direction: row;
@@ -260,18 +282,28 @@ body {
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
-
-      img {
-        margin-top: -80px;
-        border-color: #ffffff;
-        border-width: 5px;
-        border-style: solid;
-      }
     }
 
     #profile-details {
       margin-left: 0.8em;
       margin-right: 0.8em;
+    }
+
+    #profile-edit-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 14px;
+      min-height: 400px;
+      max-height: 90vh;
+      min-width: 600px;
+      max-width: 80vw;
+      height: 650px;
+      //flex-shrink: 1;
     }
   }
 }

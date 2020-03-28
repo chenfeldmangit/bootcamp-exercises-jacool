@@ -28,6 +28,10 @@
                 myTweets.appendChild(post);
             });
         }
+
+        function editProfileClick() {
+            document.getElementById("profile-edit-modal").style.display = "flex";
+        }
     </script>
 </head>
 
@@ -164,8 +168,8 @@
     <img src="img/profile-back.jfif" alt="Background">
     <div id="profile-details">
         <div id="profile-pic-bar">
-            <img src="img/jacob.jpeg" width="134" height="134" class="profile-pic" alt="Photo">
-            <a href="#" class="button">Edit profile</a>
+            <img src="img/jacob.jpeg" width="134" height="134" class="profile-face" alt="Photo">
+            <span onclick="editProfileClick()" class="button">Edit profile</span>
         </div>
         <div id="profile-data-bar">
             <h2 class="tab-title">Jacob Eckel</h2>
@@ -195,6 +199,19 @@
                     </article>
                 </div>
             </template>
+        </div>
+    </div>
+
+    <div id="profile-edit-modal" class="modal">
+        <div id="profile-edit-container">
+            <div>
+                <span class="tab-title">Edit profile</span>
+                <span class="button">Save</span>
+            </div>
+            <img src="img/profile-back.jfif">
+            <img src="img/jacob.jpeg" width="112" height="112" class="profile-face" alt="Photo">
+            <label for="name-field">Name</label>
+            <input id="name-field" type="text" placeholder="Add your name">
         </div>
     </div>
 </div>
