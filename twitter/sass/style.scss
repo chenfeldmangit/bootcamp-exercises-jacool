@@ -1,9 +1,12 @@
 $basic-blue: rgb(29, 161, 242);
+$very-light-blue: rgb(232, 245, 254);
 $basic-grey: rgb(230, 236, 240);
 $background-grey: rgb(245, 248, 250);
 $very-dark-grey: rgb(20, 23, 26);
 $darker-grey: rgb(169, 169, 169);
 $counter-grey: rgb(101, 119, 134);
+/* $basic-blue = #1da1f2 */
+$blue-filter: invert(46%) sepia(54%) saturate(2316%) hue-rotate(181deg) brightness(106%) contrast(90%);
 
 @mixin grey-borders {
   border-left-style: solid;
@@ -25,8 +28,7 @@ body {
   }
 
   .colored {
-    /* $basic-blue = #1da1f2 */
-    filter: invert(46%) sepia(54%) saturate(2316%) hue-rotate(181deg) brightness(106%) contrast(90%);
+    filter: $blue-filter;
   }
 
   ::placeholder {
@@ -37,6 +39,7 @@ body {
     font-size: 19px;
     font-weight: 800;
     margin: 0;
+    flex-grow: 2;
   }
 
   .boxy {
@@ -61,12 +64,27 @@ body {
   }
 
   .button:hover {
-    background-color: lightblue;
+    background-color: $very-light-blue;
   }
 
   .button:active {
     position: relative;
     top: 1px;
+  }
+
+  .icon-button {
+    filter: $blue-filter;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 9999px;
+    border-style: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    margin: 1em;
+  }
+
+  .icon-button:hover {
+    filter: none;
+    background-color: $very-light-blue;
   }
 
   .inner-tab-name {
@@ -99,6 +117,13 @@ body {
     background-color: rgba(0, 0, 0, 0.4);
     overflow-x: hidden;
     overflow-y: hidden;
+  }
+
+  .modal-top-bar {
+    display: flex;
+    flex-direction: row;
+    //justify-content: space-between;
+    align-items: center;
   }
 
   .post-container {
@@ -150,12 +175,17 @@ body {
 
     #menu {
       padding: unset;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
       li {
         list-style-type: none;
-        margin-bottom: 1.8em;
+        margin-bottom: 0.4em;
         display: flex;
         align-items: center;
+        padding: 0.5em 1.5em 0.5em .5em;
+        cursor: pointer;
 
         .menu-item-text {
           padding-left: 1.2em;
@@ -169,10 +199,10 @@ body {
       }
 
       li:hover {
-        background-color: $basic-blue;
+        background-color: $very-light-blue;
         border-radius: 9999px;
         //opacity: 0.2;
-        color: #ffffff; //$basic-blue;
+        color: $basic-blue;
       }
     }
   }
@@ -297,7 +327,7 @@ body {
     #profile-edit-container {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
       background-color: white;
       margin: 3em auto;
       padding: 20px;
@@ -330,6 +360,7 @@ body {
           border-bottom-color: $darker-grey;
           border-bottom-width: 2px;
         }
+
         .profile-edit-input:focus {
           outline: none;
           border-bottom-color: $basic-blue;
