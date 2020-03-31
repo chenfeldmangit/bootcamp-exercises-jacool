@@ -68,3 +68,48 @@ function saveProfileClick() {
 function closeModal() {
     document.getElementById("profile-edit-modal").style.display = "none";
 }
+
+class Tweets {
+    static async tweet() {
+        const text = document.getElementById("twitting-input").value;
+        const post = {
+            "author": "Jacob Eckel",
+            "text": text
+        };
+        await Tweets.addPostToLocal(post);
+        Tweets.addPostToDOM(post);
+    }
+
+    static addPostToDOM(post) {
+        const templateContent = document.getElementById("tweet-template").content;
+        const postElem = templateContent.cloneNode(true);
+        postElem.querySelector(".author").textContent = post.author;
+        postElem.querySelector(".post-text").textContent = post.text;
+        const tweets = document.getElementById("feed");
+        tweets.appendChild(postElem);
+    }
+
+    static sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
+
+    static async readPosts() {
+        await Tweets.sleep(5000);
+        const tweets = localStorage.getItem(Tweets.KEY);
+        if (tweets == null)
+            return [];
+        return JSON.parse(tweets);
+    }
+
+    static async addPostToLocal(post) {
+        const posts = await Tweets.readPosts();
+        posts.push(post);
+        localStorage.setItem(Tweets.KEY, JSON.stringify(posts));
+    }
+
+    static async onLoad() {
+        const posts = await Tweets.readPosts();
+        posts.forEach(p => Tweets.addPostToDOM(p));
+    }
+}
+Tweets.KEY = "tweets";

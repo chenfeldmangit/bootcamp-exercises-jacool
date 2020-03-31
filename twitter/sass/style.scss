@@ -140,6 +140,10 @@ body {
     article {
       padding-left: 1em;
       padding-right: 1em;
+      display: flex;
+      align-items: stretch;
+      flex-flow: column;
+      flex-grow: 2;
 
       .author {
         margin-block-start: 0;

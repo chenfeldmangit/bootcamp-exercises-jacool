@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body onload="Tweets.onLoad()">
 <div id="menu-container">
     <div id="logo" class="colored">
         <img src="img/logo.svg" alt="Logo" width="30" height="30">
@@ -63,7 +63,7 @@
                     <img src="img/open-gif.svg" width="24" height="24" class="colored tool-button" alt="Open gif">
                     <img src="img/smiley.svg" width="24" height="24" class="colored tool-button" alt="Open smiley">
                 </div>
-                <a href="#" id="small-tweet">Tweet</a>
+                <div id="small-tweet" onclick="Tweets.tweet()">Tweet</div>
             </div>
         </div>
 
@@ -130,6 +130,21 @@
                 </div>
             </article>
         </div>
+        <template id="tweet-template">
+            <div class="post-container boxy">
+                <img src="img/jacob.jpeg" class="profile-pic" width="50" height="50" alt="Pic">
+                <article>
+                    <h3 class="author">Author</h3>
+                    <p class="post-text">Text</p>
+                    <div class="post-toolbar">
+                        <img src="img/reply.svg" width="16" height="16" alt="Reply">
+                        <img src="img/retweet.svg" width="16" height="16" alt="Retweet">
+                        <img src="img/heart.svg" width="16" height="16" alt="Like">
+                        <img src="img/forward.svg" width="16" height="16" alt="Forward">
+                    </div>
+                </article>
+            </div>
+        </template>
     </div>
 
 </div>
