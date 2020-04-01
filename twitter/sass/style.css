@@ -129,6 +129,7 @@ body .post-container article .post-toolbar {
   filter: invert(45%) sepia(22%) saturate(324%) hue-rotate(165deg) brightness(96%) contrast(94%);
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 body #menu-container {

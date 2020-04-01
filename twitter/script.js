@@ -74,18 +74,23 @@ class Tweets {
         const text = document.getElementById("twitting-input").value;
         const post = {
             "author": "Jacob Eckel",
-            "text": text
+            "text": text,
+            "uid": (Math.round(Math.random()*1000000000000000)).toString()
         };
         Tweets.addPostToDOM(post);
         await Tweets.addPostToLocal(post);
     }
 
     static addPostToDOM(post) {
+        const tweets = document.getElementById("feed");
         const templateContent = document.getElementById("tweet-template").content;
         const postElem = templateContent.cloneNode(true);
         postElem.querySelector(".author").textContent = post.author;
         postElem.querySelector(".post-text").textContent = post.text;
-        const tweets = document.getElementById("feed");
+        const postContainer = postElem.querySelector("[data-post-id]");
+        postContainer.setAttribute("data-post-id", post.uid);
+        const deletePostButton = postContainer.querySelector("[data-delete-button]");
+        deletePostButton.addEventListener("click", () => Tweets.deleteTweet(post.uid, postContainer));
         tweets.appendChild(postElem);
     }
 
@@ -107,10 +112,21 @@ class Tweets {
         localStorage.setItem(Tweets.KEY, JSON.stringify(posts));
     }
 
+    static async removePostFromLocal(uid) {
+        const posts = await Tweets.readPosts();
+        const filtered = posts.filter(value => value.uid !== uid);
+        localStorage.setItem(Tweets.KEY, JSON.stringify(filtered));
+    }
+
     static async onLoad() {
         const posts = await Tweets.readPosts();
         document.getElementById("throbber").style.display = "none";
         posts.forEach(p => Tweets.addPostToDOM(p));
+    }
+
+    static async deleteTweet(uid, postContainer) {
+        postContainer.remove();
+        await Tweets.removePostFromLocal(uid);
     }
 }
 Tweets.KEY = "tweets";
