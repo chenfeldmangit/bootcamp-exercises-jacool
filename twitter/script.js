@@ -76,8 +76,8 @@ class Tweets {
             "author": "Jacob Eckel",
             "text": text
         };
-        await Tweets.addPostToLocal(post);
         Tweets.addPostToDOM(post);
+        await Tweets.addPostToLocal(post);
     }
 
     static addPostToDOM(post) {
@@ -94,7 +94,7 @@ class Tweets {
     }
 
     static async readPosts() {
-        await Tweets.sleep(5000);
+        await Tweets.sleep(3000);
         const tweets = localStorage.getItem(Tweets.KEY);
         if (tweets == null)
             return [];
@@ -109,6 +109,7 @@ class Tweets {
 
     static async onLoad() {
         const posts = await Tweets.readPosts();
+        document.getElementById("throbber").style.display = "none";
         posts.forEach(p => Tweets.addPostToDOM(p));
     }
 }
