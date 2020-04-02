@@ -173,6 +173,7 @@ body {
 
   #menu-container {
     flex-direction: column;
+    flex-grow: 1;
 
     #logo {
       margin-bottom: 1.5em;
@@ -216,6 +217,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-basis: 50%;
+    flex-grow: 2;
 
     @include grey-borders;
 
@@ -381,6 +383,20 @@ body {
           background-color: white;
         }
       }
+    }
+  }
+
+  #suggestions-container {
+    flex-direction: column;
+    flex-grow: 1;
+
+    #search-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: $background-grey;
+      border-radius: 9999px;
+      height: 3em;
     }
   }
 }

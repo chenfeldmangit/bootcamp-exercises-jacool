@@ -134,6 +134,7 @@ body .post-container article .post-toolbar {
 }
 body #menu-container {
   flex-direction: column;
+  flex-grow: 1;
 }
 body #menu-container #logo {
   margin-bottom: 1.5em;
@@ -171,6 +172,7 @@ body #feed-container {
   display: flex;
   flex-direction: column;
   flex-basis: 50%;
+  flex-grow: 2;
   border-left-style: solid;
   border-left-width: 1px;
   border-right-style: solid;
@@ -320,6 +322,18 @@ body #profile-container #profile-edit-container .profile-edit-field-container .i
   padding-right: 10px;
   padding-top: 5px;
   background-color: white;
+}
+body #suggestions-container {
+  flex-direction: column;
+  flex-grow: 1;
+}
+body #suggestions-container #search-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f5f8fa;
+  border-radius: 9999px;
+  height: 3em;
 }
 
 /*# sourceMappingURL=style.css.map */

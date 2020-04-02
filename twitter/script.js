@@ -69,6 +69,42 @@ function closeModal() {
     document.getElementById("profile-edit-modal").style.display = "none";
 }
 
+class Local {
+    static sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
+
+    static async readPosts() {
+        await Local.sleep(3000);
+        const tweets = localStorage.getItem(Local.KEY);
+        if (tweets == null)
+            return [];
+        return JSON.parse(tweets);
+    }
+
+    static async addPostToLocal(post) {
+        const posts = await Local.readPosts();
+        posts.push(post);
+        Local.store(posts);
+    }
+
+    static store(posts) {
+        localStorage.setItem(Local.KEY, JSON.stringify(posts));
+    }
+
+    static async removePostFromLocal(uid) {
+        const posts = await Local.readPosts();
+        const filtered = posts.filter(value => value.uid !== uid);
+        Local.store(filtered);
+    }
+
+    static async search(text) {
+        const posts = await Local.readPosts();
+        return posts.filter(value => value.text.includes(text));
+    }
+}
+Local.KEY = "tweets";
+
 class Tweets {
     static async tweet() {
         const text = document.getElementById("twitting-input").value;
@@ -78,7 +114,7 @@ class Tweets {
             "uid": (Math.round(Math.random()*1000000000000000)).toString()
         };
         Tweets.addPostToDOM(post);
-        await Tweets.addPostToLocal(post);
+        await Local.addPostToLocal(post);
     }
 
     static addPostToDOM(post) {
@@ -94,39 +130,34 @@ class Tweets {
         tweets.appendChild(postElem);
     }
 
-    static sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms))
-    }
-
-    static async readPosts() {
-        await Tweets.sleep(3000);
-        const tweets = localStorage.getItem(Tweets.KEY);
-        if (tweets == null)
-            return [];
-        return JSON.parse(tweets);
-    }
-
-    static async addPostToLocal(post) {
-        const posts = await Tweets.readPosts();
-        posts.push(post);
-        localStorage.setItem(Tweets.KEY, JSON.stringify(posts));
-    }
-
-    static async removePostFromLocal(uid) {
-        const posts = await Tweets.readPosts();
-        const filtered = posts.filter(value => value.uid !== uid);
-        localStorage.setItem(Tweets.KEY, JSON.stringify(filtered));
-    }
-
     static async onLoad() {
-        const posts = await Tweets.readPosts();
+        const posts = await Local.readPosts();
         document.getElementById("throbber").style.display = "none";
         posts.forEach(p => Tweets.addPostToDOM(p));
     }
 
     static async deleteTweet(uid, postContainer) {
         postContainer.remove();
-        await Tweets.removePostFromLocal(uid);
+        await Local.removePostFromLocal(uid);
+    }
+
+    static clearTweets() {
+        const tweets = document.getElementById("feed");
+        const children = Array.from(tweets.children);
+        for (let i=0; i < children.length; i++) {
+            if (children[i].nodeName !== "TEMPLATE")
+                tweets.removeChild(children[i]);
+        }
     }
 }
-Tweets.KEY = "tweets";
+
+class Search {
+    static async search() {
+        const text = document.getElementById("search-input").value;
+        const posts = await Local.search(text);
+        Tweets.clearTweets();
+        posts.forEach(p => Tweets.addPostToDOM(p));
+    }
+
+
+}
