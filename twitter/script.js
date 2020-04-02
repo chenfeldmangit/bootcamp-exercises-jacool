@@ -145,8 +145,9 @@ class Tweets {
         const tweets = document.getElementById("feed");
         const children = Array.from(tweets.children);
         for (let i=0; i < children.length; i++) {
-            if (children[i].nodeName !== "TEMPLATE")
-                tweets.removeChild(children[i]);
+            const child = children[i];
+            if (child.nodeName !== "TEMPLATE" && child.id !== "throbber")
+                tweets.removeChild(child);
         }
     }
 }
@@ -154,10 +155,10 @@ class Tweets {
 class Search {
     static async search() {
         const text = document.getElementById("search-input").value;
-        const posts = await Local.search(text);
         Tweets.clearTweets();
+        document.getElementById("throbber").style.display = "flex";
+        const posts = await Local.search(text);
+        document.getElementById("throbber").style.display = "none";
         posts.forEach(p => Tweets.addPostToDOM(p));
     }
-
-
 }
